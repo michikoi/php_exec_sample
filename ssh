@@ -1,0 +1,14 @@
+<?php
+
+public function sshProcess(Request $request)
+{
+try{
+	$output = exec("sshpass -p".env('SSH_PASSWORD','')."ssh ".env('SSH','')." 'cd /filepath && ./scriptfile.sh 2>&1; '", $result);
+
+}catch(\Exception $e){
+
+	throw new \Exception($e->getMessage());
+}
+
+
+}//function
